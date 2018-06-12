@@ -38,7 +38,17 @@ class WorldBank(db.Model):
 def home():
     return render_template("wba_html_draft.html")
 
+# Heatmap
+@app.route("/heatmap")
+def heatmap():
+    return render_template("wba_heatmap.html")
 
-@app.route("/")
+# Describe reasons for debt by country name
+@app.route("/analysis/<country_name>")
+def analysisByCountry():
+    pass # Possibly add an analysis or biography of how the country got to where it is due to the amount of debt they have
 
-
+@app.route("/poverty")
+def povertyVersusDebt():
+    pass # Add a page that lets you pick a country and shows the percentage of poverty and total debt on one plot chart
+    # 
