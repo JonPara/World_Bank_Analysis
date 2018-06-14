@@ -63,8 +63,27 @@ body {
     align-items: center;
   }
 
-  .photoLeft{
+  .map{
     display: flex;
-    justify-content: left;
-    align-items: left;
+    justify-content: center;
+    align-items: center;
+    padding: 320px;
+  }
+
+
+  .img1{
+    position: absolute;
+    left: 0px;
+    width: 300px;
+    border: 3px solid #42a7f4;
+    padding: 10px;
+    
+  }
+
+  .explain{
+    position: absolute;
+    right: 0px;
+    width: 300px;
+    border: 3px solid #42a7f4;
+    padding: 10px;
   }
