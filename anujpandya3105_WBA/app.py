@@ -33,7 +33,7 @@ session = Session(engine)
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("./index.html")
 
 @app.route("/country")
 def country_info():
@@ -41,6 +41,40 @@ def country_info():
     print(resultc)
     country_list = [list(i) for i in resultc]
     return jsonify(country_list)
+
+
+@app.route("/debt/<country>")
+def debtByCountry(country):
+    print(country)
+    year = [2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016]
+    debt_per_year = []
+    debt_result = {}
+    resultids = session.query(IDSData.yr_2006,
+                              IDSData.yr_2007,
+                              IDSData.yr_2008,
+                              IDSData.yr_2009,
+                              IDSData.yr_2010,
+                              IDSData.yr_2011,
+                              IDSData.yr_2012,
+                              IDSData.yr_2013,
+                              IDSData.yr_2014,
+                              IDSData.yr_2015,
+                              IDSData.yr_2016
+                              ).filter_by(Country_Code=country, Indicator_Code='DT.DOD.DLXF.CD').all()
+    print(resultids)
+
+   
+    for resultid in resultids:
+        debt_per_year.append(resultid)
+
+    # Add the above lists to the dictionary
+    debt_result = {
+		"year": year,
+		"debt_per_year": debt_per_year
+    }
+    # debt_list = [list(i) for i in resultids]
+    return jsonify(debt_result)
+
 
 if __name__ == '__main__':
     app.run(debug=False)
