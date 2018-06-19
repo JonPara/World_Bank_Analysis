@@ -27,6 +27,7 @@ CountryMaster = Base.classes.country_master
 IndicatorMaster = Base.classes.indicator_master
 IDSData = Base.classes.ids_data
 PovertyData = Base.classes.poverty_data
+CountryMaster1 = Base.classes.country_master1
 
 #create session (link) from Python to the DB
 session = Session(engine)
@@ -42,6 +43,14 @@ def country_info():
     country_list = [list(i) for i in resultc]
     return jsonify(country_list)
 
+@app.route("/country1/<country>")
+def country_info1(country):
+    resultc1 = session.query(CountryMaster1.country_code, CountryMaster1.country_long_name,
+                             CountryMaster1.currency_unit, CountryMaster1.income_group,
+                             CountryMaster1.region).filter_by(country_code=country).all()
+    print(resultc1)
+    country_list1 = [list(i) for i in resultc1]
+    return jsonify(country_list1)
 
 @app.route("/debt/<country>")
 def debtByCountry(country):
