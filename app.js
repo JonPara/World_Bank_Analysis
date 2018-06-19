@@ -4,7 +4,7 @@ function getCountryNames() {
   Plotly.d3.json(queryUrl, function(error, response) {
 
 	var nameList = document.querySelector("#selDataset");
-	alert(nameList);
+	//alert(nameList);
 	
 	for (i=0; i < response.length; i++) {
 		 	console.log(response[i])
@@ -17,15 +17,41 @@ function getCountryNames() {
 	// initSampledata();
 	initDebt();
 	initPoverty();
+	initCountryData();
 }
 getCountryNames();
 
 function optionChanged(country) {
 	
-	alert(country);
+	//alert(country);
+	// var queryUrl = "/country/"+sample_data;
 	redrawDebt(country); 
 	redrawPoverty(country);
+	redrawCountryData(country);
 }
+
+// function optionChanged(country){
+	
+// 	//alert(sample_data);
+// 	var queryUrl = "/country1/"+country;
+	
+// 	//alert(queryUrl);
+//   	Plotly.d3.json(queryUrl, function(error, response) {
+	
+// 	console.log(response);
+// 	var d = document.querySelector("#d_country");
+// 	d.innerHTML=' ';
+
+// 	d.innerHTML =  "Country Code:" + response.country_long_name + ", " 
+// 	+"</br>" +  "Currency:" + response.currency_unit + ", " 
+// 	+"</br>" +  "Income Group:" + response.income_group + ", " 
+// 	+"</br>" +  "Region:" +  response.region ;
+	
+// 	redrawDebt(country); 
+// 	redrawPoverty(country);
+
+// 	});
+// }
 
 function initDebt() {
 	var queryUrl = "/debt/AFG";
@@ -116,9 +142,30 @@ function initPoverty() {
 	});
 }
 
-//PArt IIOption Changing Code*********************************
+function initCountryData(){
+	
+	//alert("Inside initCountryData");
+	var queryUrl = "/country1/AFG";
+	
 
+	//alert(queryUrl);
+	Plotly.d3.json(queryUrl, function(error, response) {
+	
+	console.log(response);
+	var d = document.querySelector("#d_country");
+	d.innerHTML=' ';
+	
+	//var obj = JSON.parse(response);
+	d.innerHTML =  "<b>Country Name: </b>" + response[0][1]
+	+"</br>" +     "<b>Currency    : </b>" + response[0][2] 
+	+"</br>" +     "<b>Income Group: </b>" + response[0][3]
+	+"</br>" +     "<b>Region      : </b>" +  response[0][4] ;
 
+	
+	});
+}
+
+//Part IIOption Changing Code*********************************
 
 function redrawDebt(country) {
 	// var queryUrl = "/debt/AFG";
@@ -207,5 +254,27 @@ function redrawPoverty(country) {
 
 		Plotly.newPlot("poverty-bar-chart", data, layout);
 		
+	});
+}
+
+function redrawCountryData(country){
+	
+	// alert("Inside redrawCountryData");
+	// alert(country);
+	var queryUrl = "/country1/"+country;
+
+	//alert(queryUrl);
+	Plotly.d3.json(queryUrl, function(error, response) {
+	
+	console.log(response);
+	var d = document.querySelector("#d_country");
+	d.innerHTML=' ';
+	
+	//var obj = JSON.parse(response);
+	d.innerHTML =  "<b>Country Name: </b>" + response[0][1]
+	+"</br>" +     "<b>Currency    : </b>" + response[0][2] 
+	+"</br>" +     "<b>Income Group: </b>" + response[0][3]
+	+"</br>" +     "<b>Region      : </b>" +  response[0][4] ;
+
 	});
 }
