@@ -1,36 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>World Bank</title>
+    <link rel="stylesheet" href="../static/style.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
 </head>
+
 <body>
-	<h2 align='center'> World BankData </h2>
-    <div id="bar"></div>
+    <header>
+        
+        <h2 align='center'> World National Debt </h2>
     
+    </header>
+    <div class="selector">
+        
+        
+
+        <h4> Choose Country</h4>
+        <select id="selDataset" onchange="optionChanged(this.value)"></select>
+    </div>
+    <!-- <div id="bar"></div> -->
+
     <!-- <div id="pie"></div> -->
-    
-    <h4> SELECTs Country</h4>
+
+   
     <!-- <select id= "selDataset">Place Holder for Select</select> -->
-    <select id="selDataset" onchange="optionChanged(this.value)"></select>
-                                          
-    <div id="debt-bar-chart"></div>
-    <div id="poverty-bar-chart"></div>
-    
+   
+    <div class="descr" id="d_country"></div>
+    <div class="charts-section">
+        <div class="chart" id="debt-bar-chart"></div>
+        <div class="chart" id="poverty-bar-chart"></div>
+        <div class="chart" id="education-bar-chart"></div>
+    </div>
+<!-- s -->
 
-    <h4> Sample Data </h4>
-    <div id="d_country"></div>
 
-    
-	 
 
- 
-   <script type='text/javascript' src="../static/app.js"></script>
-	
-	
-	
+
+
+
+    <script type='text/javascript' src="../static/app.js"></script>
+
+
+
 </body>
+
 </html>
