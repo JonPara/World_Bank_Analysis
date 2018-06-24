@@ -1,0 +1,42 @@
+body {
+  /* border: solid 2px red; */
+      font-family: "Open Sans", verdana, arial, sans-serif;
+      padding: 15px
+}
+
+
+.plot-container {
+    border: solid 2px #000000;
+    width: 400px;
+    /* float: left; */
+}
+
+header, .descr {
+  padding: 10px;
+}
+
+header {
+  position: relative;
+}
+
+.desc {
+  position: relative;
+  display: block;
+}
+
+.charts-section {
+  position: relative;
+  display: block;
+}
+
+.chart {
+  position: relative;
+  displaY: inline-block;
+  width: 33%;
+  /* margin: 10px; */
+}
+
+.country-details {
+  position: relative;
+  display: block;
+}
