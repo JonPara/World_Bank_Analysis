@@ -1,6 +1,7 @@
 function getCountryNames() {
 
-	var queryUrl = "http://127.0.0.1:5000/country";
+//   var queryUrl = "http://127.0.0.1:5000/country";
+  var queryUrl = "/country";
   Plotly.d3.json(queryUrl, function(error, response) {
 
 	var nameList = document.querySelector("#selDataset");
@@ -58,7 +59,8 @@ function optionChanged(country) {
 // }
 
 function initDebt() {
-	var queryUrl = "http://127.0.0.1:5000/debt/AFG";
+	// var queryUrl = "http://127.0.0.1:5000/debt/AFG";
+	var queryUrl = "/debt/AFG";
 	
 	//var queryUrl = "/samples/"+sample_data;
 	var BAR = document.getElementById("debt-bar-chart");
@@ -148,7 +150,8 @@ function initDebt() {
 // }
 
 function initPoverty() {
-	var queryUrl = "http://127.0.0.1:5000/poverty/AFG";
+	// var queryUrl = "http://127.0.0.1:5000/poverty/AFG";
+	var queryUrl = "/poverty/AFG";
 	
 	//var queryUrl = "/samples/"+sample_data;
 	var BAR = document.getElementById("poverty-bar-chart");
@@ -204,6 +207,17 @@ function initPoverty() {
 			  bottom: 10,
 			  right: 10,
 			  left: 10
+			},
+			xaxis : {
+				title :"Year",
+				tickangle : -45,
+				tickfont : {
+				  size : 10,
+				  color : 'purple'
+				}
+			},
+			yaxis : {
+				title :"Poverty Line(thousands)"
 			}
 		};
 
@@ -215,7 +229,8 @@ function initPoverty() {
 function initCountryData(){
 	
 	//alert("Inside initCountryData");
-	var queryUrl = "http://127.0.0.1:5000/country1/AFG";
+	// var queryUrl = "http://127.0.0.1:5000/country1/AFG";
+	var queryUrl = "/country1/AFG";
 	
 
 	//alert(queryUrl);
@@ -236,7 +251,8 @@ function initCountryData(){
 }
 
 function initEducation() {
-	var queryUrl = "http://127.0.0.1:5000/educationm/AFG";
+	// var queryUrl = "http://127.0.0.1:5000/educationm/AFG";
+	var queryUrl = "/educationm/AFG";
 	
 	//var queryUrl = "/samples/"+sample_data;
 
@@ -372,7 +388,8 @@ function initEducation() {
 function redrawDebt(country) {
 	// var queryUrl = "/debt/AFG";
 	
-	var queryUrl = "http://127.0.0.1:5000/debt/"+country;
+	// var queryUrl = "http://127.0.0.1:5000/debt/"+country;
+	var queryUrl = "/debt/"+country;
 	var BAR = document.getElementById("debt-bar-chart");
 	
 	Plotly.d3.json(queryUrl, function(error, response) {
@@ -418,7 +435,8 @@ function redrawPoverty(country) {
 	//alert(country);
 	//var queryUrl = "/poverty/EAP";
 	
-	var queryUrl = "http://127.0.0.1:5000/poverty/"+country;
+	// var queryUrl = "http://127.0.0.1:5000/poverty/"+country;
+	var queryUrl = "/poverty/"+country;
 	var BAR = document.getElementById("poverty-bar-chart");
 	
 	Plotly.d3.json(queryUrl, function(error, response) {
@@ -472,6 +490,17 @@ function redrawPoverty(country) {
 			  bottom: 10,
 			  right: 10,
 			  left: 10
+			},
+			xaxis : {
+				title :"Year",
+				tickangle : -45,
+				tickfont : {
+				  size : 10,
+				  color : 'purple'
+				}
+			},
+			yaxis : {
+				title :"Poverty Line(thousands)"
 			}
 		};
 
@@ -528,7 +557,8 @@ function redrawCountryData(country){
 	
 	// alert("Inside redrawCountryData");
 	// alert(country);
-	var queryUrl = "http://127.0.0.1:5000/country1/"+country;
+	// var queryUrl = "http://127.0.0.1:5000/country1/"+country;
+	var queryUrl = "/country1/"+country;
 
 	//alert(queryUrl);
 	Plotly.d3.json(queryUrl, function(error, response) {
@@ -549,7 +579,8 @@ function redrawCountryData(country){
 function redrawEducation(country) {
 	//var queryUrl = "/educationm/MLI";
 	
-	var queryUrl = "http://127.0.0.1:5000/educationm/"+country;
+	// var queryUrl = "http://127.0.0.1:5000/educationm/"+country;
+	var queryUrl = "/educationm/"+country;
 
 	var BAR = document.getElementById("education-bar-chart");
 	
